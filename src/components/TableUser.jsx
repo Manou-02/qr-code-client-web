@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import { AddUser } from './AddUser';
 
 const db_uri = "http://localhost:5000/users";
 
@@ -24,21 +25,22 @@ const TableUser = () => {
   return (
     <div>
           <h3>Table User</h3>
-          <table border="1">
+          <AddUser />
+          <table border="1" style={{borderCollapse : "collapse"}}>
                 <thead>
                       <tr>
-                        <td> #ID </td>
+                        {/* <td> #ID </td> */}
                         <td> N° Matricule </td>
-                        <td> Name </td>
-                        <td> Firstname </td>
+                        <td> Nom </td>
+                        <td> Prenom </td>
                         <td> Qr </td>
                         <td> Actions </td>
                       </tr>
                 </thead>
                 <tbody>
                         {user.map(u => (
-                              <tr>
-                                    <td> {u._id} </td>
+                              <tr key={u._id}>
+                                    {/* <td> {u._id} </td> */}
                                     <td> {u.matricule} </td>
                                     <td> {u.name} </td>
                                     <td> {u.firstname} </td>
@@ -47,6 +49,10 @@ const TableUser = () => {
 
                                                 <img src={u.qr} alt="" />
                                           </a>
+                                    </td>
+                                    <td>
+                                          <button>Modifier</button>
+                                          <button>Supprimer</button>
                                     </td>
                               </tr>
                         ))}

@@ -14,7 +14,6 @@ const TablePresence = () => {
             }).catch(err => {
                   console.log(err);
             })
-            console.log(presence);
       }
 
       useEffect(()  => {
@@ -24,10 +23,10 @@ const TablePresence = () => {
   return (
     <div>
           <h3>Table Presence</h3>
-          <table border="1" style={{border : ''}}>
+          <table border="1" style={{borderCollapse : 'collapse'}}>
                 <thead>
                       <tr>
-                            <th>#ID</th>
+                            {/* <th>#ID</th> */}
                             <th>N° Matricule</th>
                             <th>Date</th>
                             <th>Presence</th>
@@ -35,8 +34,8 @@ const TablePresence = () => {
                 </thead>
                 <tbody>
                       {presence.map(p => (
-                            <tr>
-                                  <td> {p._id} </td>
+                            <tr key={p._id}>
+                                  {/* <td> {p._id} </td> */}
                                   <td> {p.user} </td>
                                   <td> {p.createdAt} </td>
                                   <td> {p.presence ? "p" : ""} </td>
